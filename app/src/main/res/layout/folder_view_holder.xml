@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_card">
+
+    <ImageView
+        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:id="@+id/image_folder"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/ic_action_folder"
+        android:contentDescription="@string/file_pic" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_name"
+        android:maxWidth="150dp"
+        android:text="@string/folder_name"
+        android:maxLines="1"
+        android:textSize="18sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/image_folder"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_size"
+        android:maxWidth="100dp"
+        android:text="@string/amount_of_files"
+        android:maxLines="1"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_light_italic"
+        android:textColor="@color/secondaryTextColor"
+        app:layout_constraintTop_toBottomOf="@id/text_name"
+        app:layout_constraintLeft_toLeftOf="@id/text_name"/>
+
+    <ImageView
+        android:layout_height="24dp"
+        android:layout_width="0dp"
+        android:id="@+id/image_go"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_action_arrow_right"
+        android:contentDescription="@string/file_pic" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
