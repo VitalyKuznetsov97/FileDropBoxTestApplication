@@ -9,12 +9,12 @@
     <ImageView
         android:layout_height="48dp"
         android:layout_width="0dp"
-        android:id="@+id/image_file"
+        android:id="@+id/image_folder"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:src="@drawable/ic_action_file"
+        android:src="@drawable/ic_action_folder"
         android:contentDescription="@string/file_pic" />
 
     <TextView
@@ -22,36 +22,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/text_name"
         android:maxWidth="150dp"
-        android:text="@string/file_name"
+        android:text="@string/folder_name"
         android:maxLines="1"
         android:textSize="18sp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:fontFamily="@font/roboto_regular"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/image_file"/>
+        app:layout_constraintLeft_toRightOf="@id/image_folder"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/text_url"
+        android:id="@+id/text_amount"
         android:maxWidth="100dp"
-        android:text="@string/file_url"
-        android:maxLines="1"
-        android:textSize="14sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/roboto_regular"
-        app:layout_constraintTop_toTopOf="@id/text_name"
-        app:layout_constraintBottom_toBottomOf="@id/text_name"
-        app:layout_constraintLeft_toRightOf="@id/text_name" />
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_size"
-        android:maxWidth="50dp"
-        android:text="@string/file_size"
+        android:text="@string/amount_of_files"
         android:maxLines="1"
         android:textSize="14sp"
         android:fontFamily="@font/roboto_light_italic"
@@ -59,19 +44,15 @@
         app:layout_constraintTop_toBottomOf="@id/text_name"
         app:layout_constraintLeft_toLeftOf="@id/text_name"/>
 
-    <TextView
-        android:id="@+id/text_date"
+    <ImageView
+        android:layout_height="24dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="18dp"
-        android:fontFamily="@font/roboto_light_italic"
-        android:maxWidth="100dp"
-        android:maxLines="1"
-        android:text="@string/file_date"
-        android:textColor="@color/secondaryTextColor"
-        android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@id/text_size"
-        app:layout_constraintTop_toTopOf="@id/text_size"
-        android:layout_marginStart="18dp" />
+        android:id="@+id/image_go"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_action_arrow_right"
+        android:contentDescription="@string/file_pic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

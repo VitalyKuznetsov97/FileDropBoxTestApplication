@@ -13,4 +13,6 @@
     <string name="cancel">Cancel</string>
     <string name="mail_address">Mail address</string>
     <string name="dropbox">Dropbox</string>
+    <string name="following_error_occurred">Following error occurred:</string>
+    <string name="error_text">Error text</string>
 </resources>
