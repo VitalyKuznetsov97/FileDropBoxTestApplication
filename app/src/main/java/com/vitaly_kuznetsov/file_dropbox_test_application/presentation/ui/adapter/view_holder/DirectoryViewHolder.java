@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.vitaly_kuznetsov.file_dropbox_test_application.R;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.model.DirectoryModel;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.model.IModel;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.adapter.RecyclerViewAdapter;
 
 import androidx.annotation.NonNull;
 
@@ -16,10 +17,11 @@ public class DirectoryViewHolder extends IViewHolder {
     private TextView name;
     private TextView amountOfFiles;
 
-    public DirectoryViewHolder(@NonNull View itemView) {
+    public DirectoryViewHolder(@NonNull View itemView, RecyclerViewAdapter adapter) {
         super(itemView);
         name = itemView.findViewById(R.id.text_name);
         amountOfFiles = itemView.findViewById(R.id.text_amount);
+        itemView.setOnClickListener(view -> adapter.onItemClicked(this.getAdapterPosition()));
     }
 
     @Override
@@ -31,5 +33,4 @@ public class DirectoryViewHolder extends IViewHolder {
             amountOfFiles.setText(string);
         }
     }
-
 }

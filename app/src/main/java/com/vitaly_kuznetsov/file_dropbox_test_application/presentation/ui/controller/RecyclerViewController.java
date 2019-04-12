@@ -22,15 +22,23 @@ public class RecyclerViewController implements IShowDataController {
     private ConstraintLayout constraintLayout;
     private ProgressBar progressBar;
     private RecyclerViewAdapter adapter;
+    private IActivityItemClick itemClick;
 
     public RecyclerViewController(Activity activity) {
         recyclerView = activity.findViewById(R.id.recycler_view);
         constraintLayout = activity.findViewById(R.id.constraint_recycler);
 
+        if (activity instanceof IActivityItemClick)
+            itemClick = (IActivityItemClick) activity;
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new RecyclerViewAdapter();
+        adapter = new RecyclerViewAdapter(this);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void onItemClicked(IModel iModel){
+        if (itemClick != null) itemClick.onItemClicked(iModel);
     }
 
     @Override

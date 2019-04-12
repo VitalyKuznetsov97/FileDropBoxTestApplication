@@ -10,6 +10,15 @@ public class DirectoryModel implements IModel {
 
     private String name;
     private int amountOfFiles;
+    private String pathLower;
+
+    public String getPathLower() {
+        return pathLower;
+    }
+
+    public void setPathLower(String pathLower) {
+        this.pathLower = pathLower;
+    }
 
     public String getName() {
         return name;

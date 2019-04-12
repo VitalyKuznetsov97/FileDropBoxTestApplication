@@ -11,7 +11,6 @@ import static com.vitaly_kuznetsov.file_dropbox_test_application.presentation.co
 public class FileModel implements IModel {
 
     private String name;
-    private String url;
     private String size;
     private Date date;
 
@@ -21,14 +20,6 @@ public class FileModel implements IModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     public String getSize() {

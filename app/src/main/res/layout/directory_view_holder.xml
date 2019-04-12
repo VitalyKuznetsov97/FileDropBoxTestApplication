@@ -7,7 +7,7 @@
     android:background="@drawable/background_card">
 
     <ImageView
-        android:layout_height="48dp"
+        android:layout_height="36dp"
         android:layout_width="0dp"
         android:id="@+id/image_folder"
         app:layout_constraintDimensionRatio="1:1"
@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:src="@drawable/ic_action_folder"
-        android:contentDescription="@string/file_pic" />
+        android:contentDescription="@string/directory_pic" />
 
     <TextView
         android:layout_width="0dp"
@@ -53,6 +53,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/ic_action_arrow_right"
-        android:contentDescription="@string/file_pic" />
+        android:contentDescription="@string/go_to_this_folder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * This interface represents a presenter used by
- * {@link ShowDataPresenter.LoadDataUseCaseObserver}
+ * {@link AbstractShowDataPresenter.LoadDataUseCaseObserver}
  */
 
 public interface IShowDataPresenter {

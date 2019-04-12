@@ -7,38 +7,85 @@
     android:padding="16dp"
     tools:context=".presentation.ui.activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/latest_chosen_file"
-        android:textSize="24sp"
-        android:id="@+id/text_0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:id="@+id/constraint_recycler"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/text_0">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recycler_view" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:layout_marginRight="4dp"
-        android:text="@string/choose_file"
-        android:id="@+id/button_choose"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="4dp" />
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/latest_chosen_file"
+                android:textSize="24sp"
+                android:id="@+id/text_0"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/constraint_recycler"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:id="@+id/constraint_recycler"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@id/linear_layout_login">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/recycler_view" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:id="@+id/linear_layout_login"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/background_card_colored"
+                app:layout_constraintBottom_toTopOf="@id/button_choose">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/you_are_not_logged_in"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_light_italic"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:id="@+id/text_user_mail" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_gravity="center"
+                    android:text="@string/log_in"
+                    android:id="@+id/button_log_in"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginRight="4dp"
+                android:text="@string/choose_file"
+                android:id="@+id/button_choose"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="4dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

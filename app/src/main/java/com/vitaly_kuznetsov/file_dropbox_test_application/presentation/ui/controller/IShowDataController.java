@@ -7,6 +7,8 @@ import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.model
 
 import java.util.ArrayList;
 
+import io.reactivex.Observable;
+
 /**
  * Interface that allows Activities in this application to execute basic ui-commands,
  * without binding them with a specific data representing model. For example you could replace

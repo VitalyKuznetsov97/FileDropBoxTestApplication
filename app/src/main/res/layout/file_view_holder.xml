@@ -7,7 +7,7 @@
     android:background="@drawable/background_card">
 
     <ImageView
-        android:layout_height="48dp"
+        android:layout_height="36dp"
         android:layout_width="0dp"
         android:id="@+id/image_file"
         app:layout_constraintDimensionRatio="1:1"
@@ -30,21 +30,6 @@
         android:fontFamily="@font/roboto_regular"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/image_file"/>
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_url"
-        android:maxWidth="100dp"
-        android:text="@string/file_url"
-        android:maxLines="1"
-        android:textSize="14sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/roboto_regular"
-        app:layout_constraintTop_toTopOf="@id/text_name"
-        app:layout_constraintBottom_toBottomOf="@id/text_name"
-        app:layout_constraintLeft_toRightOf="@id/text_name" />
 
     <TextView
         android:layout_width="0dp"

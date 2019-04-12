@@ -15,4 +15,12 @@
     <string name="dropbox">Dropbox</string>
     <string name="following_error_occurred">Following error occurred:</string>
     <string name="error_text">Error text</string>
+    <string name="info_pic">Info pic</string>
+    <string name="error_pic">Error pic</string>
+    <string name="directory_pic">Directory pic</string>
+    <string name="go_to_this_folder">Go to this folder</string>
+    <string name="email">eMail</string>
+    <string name="log_in">Log in</string>
+    <string name="you_are_not_logged_in">You are not logged in.</string>
+    <string name="no_files">No files.</string>
 </resources>

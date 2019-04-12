@@ -7,7 +7,8 @@ public final class PresentationConstants {
     public static final String FILE_STRING = " file(s)";
 
     //View Holder Constants
-    public static final int ERROR = 0;
+    public static final int ERROR = -1;
+    public static final int EMPTY = 0;
     public static final int DIRECTORY = 1;
     public static final int FILE = 2;
 }

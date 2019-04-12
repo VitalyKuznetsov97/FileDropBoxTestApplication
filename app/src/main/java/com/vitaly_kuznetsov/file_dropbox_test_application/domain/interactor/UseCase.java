@@ -18,8 +18,8 @@ import io.reactivex.observers.DisposableObserver;
  */
 public abstract class UseCase<T, Params> {
 
-    final ExecutionThread executionThread;
-    final PostExecutionThread postExecutionThread;
+    private final ExecutionThread executionThread;
+    private final PostExecutionThread postExecutionThread;
     private final CompositeDisposable disposables;
 
     UseCase(ExecutionThread threadExecutor, PostExecutionThread postExecutionThread) {
