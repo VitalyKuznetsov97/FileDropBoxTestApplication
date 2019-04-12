@@ -6,12 +6,12 @@ import com.vitaly_kuznetsov.file_dropbox_test_application.domain.repository.IUse
 
 import io.reactivex.Observable;
 
-public class GetUserEmailUseCase extends UseCase<String, Void> {
+public class GetUserDetailsUseCase extends UseCase<String, Void> {
 
     private IUserRepository authRepository;
 
-    public GetUserEmailUseCase(ExecutionThread threadExecutor, PostExecutionThread postExecutionThread,
-                               IUserRepository authRepository) {
+    public GetUserDetailsUseCase(ExecutionThread threadExecutor, PostExecutionThread postExecutionThread,
+                                 IUserRepository authRepository) {
         super(threadExecutor, postExecutionThread);
         this.authRepository = authRepository;
     }

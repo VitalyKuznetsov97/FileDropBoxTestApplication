@@ -25,7 +25,9 @@ public class UserRepository implements IUserRepository {
             DbxRequestConfig config = new DbxRequestConfig("dropbox/sample-app", "en_US");
             DbxClientV2 dbxClient = new DbxClientV2(config, accessToken);
             try {
-                return dbxClient.users().getCurrentAccount().getEmail();
+                String result = dbxClient.users().getCurrentAccount().getEmail();
+                result += "\n" + dbxClient.users().getCurrentAccount().getReferralLink();
+                return result;
             } catch (DbxException e) {
                 return null;
             }

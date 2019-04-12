@@ -1,7 +1,5 @@
 package com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter;
 
-import android.content.Context;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.vitaly_kuznetsov.file_dropbox_test_application.data.repository.DpbxRepository;
 import com.vitaly_kuznetsov.file_dropbox_test_application.data.repository.FileRepository;
@@ -29,8 +27,10 @@ public class LastFileShowDataPresenter extends AbstractShowDataPresenter{
         refreshData();
     }
 
-    public void onResume(Context context){
-        DpbxRepository.checkLogged(context);
+    @Override
+    public void attachView(IShowDataView view) {
+        super.attachView(view);
+        DpbxRepository.checkLogged();
         startShowDataUseCase();
     }
 

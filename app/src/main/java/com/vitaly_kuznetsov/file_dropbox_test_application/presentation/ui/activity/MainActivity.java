@@ -36,13 +36,6 @@ public class MainActivity extends MvpAppCompatActivity implements IShowDataView,
         findViewById(R.id.button_log_in).setOnClickListener(view -> DpbxRepository.auth(this));
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        lastFileShowDataPresenter.onResume(this);
-        showEmailPresenter.onResume();
-    }
-
     /**
      * IShowDataView Methods.
      */

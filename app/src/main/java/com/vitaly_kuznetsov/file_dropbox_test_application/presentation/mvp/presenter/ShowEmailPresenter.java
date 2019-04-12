@@ -1,12 +1,12 @@
 package com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter;
 
-import android.content.Context;
+import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.vitaly_kuznetsov.file_dropbox_test_application.data.repository.DpbxRepository;
 import com.vitaly_kuznetsov.file_dropbox_test_application.data.repository.UserRepository;
 import com.vitaly_kuznetsov.file_dropbox_test_application.domain.interactor.DefaultObserver;
-import com.vitaly_kuznetsov.file_dropbox_test_application.domain.interactor.GetUserEmailUseCase;
+import com.vitaly_kuznetsov.file_dropbox_test_application.domain.interactor.GetUserDetailsUseCase;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowEmailView;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.thread.UIThread;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.thread.UseCaseExecutionThread;
@@ -14,7 +14,7 @@ import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.thread.Us
 @InjectViewState
 public class ShowEmailPresenter extends BasePresenter<IShowEmailView> {
 
-    private GetUserEmailUseCase getUserEmailUseCase;
+    private GetUserDetailsUseCase getUserEmailUseCase;
 
     /**
      * MVP methods:
@@ -22,10 +22,14 @@ public class ShowEmailPresenter extends BasePresenter<IShowEmailView> {
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-        getUserEmailUseCase = new GetUserEmailUseCase(new UseCaseExecutionThread(), new UIThread(), new UserRepository());
+        getUserEmailUseCase = new GetUserDetailsUseCase(new UseCaseExecutionThread(), new UIThread(), new UserRepository());
     }
 
-    public void onResume(){
+    @Override
+    public void attachView(IShowEmailView view) {
+        super.attachView(view);
+        Log.d("APP_DEBUG", "OnAttach" + this.toString());
+        DpbxRepository.checkLogged();
         startGetUserEmailUseCase();
     }
 
@@ -37,6 +41,7 @@ public class ShowEmailPresenter extends BasePresenter<IShowEmailView> {
     }
 
     private void onEmailReceived(String email){
+        Log.d("APP_DEBUG", "OnReceived" + this.toString());
         if (email != null && !(email.equals("")))
         getViewState().showUserEmail(email);
     }
