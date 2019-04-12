@@ -16,9 +16,8 @@ import java.util.ArrayList;
 @StateStrategyType(AddToEndSingleStrategy.class)
 public interface IShowDataView extends MvpView {
 
-    void adaptUi(String directory);
-
     void finishActivity();
+
     /**
      * Loading Methods.
      * Show a view with a progress bar indicating a loading process.

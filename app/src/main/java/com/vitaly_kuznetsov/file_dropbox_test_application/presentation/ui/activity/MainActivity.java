@@ -1,5 +1,6 @@
 package com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.activity;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -10,19 +11,19 @@ import com.vitaly_kuznetsov.file_dropbox_test_application.data.repository.DpbxRe
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.model.ErrorModel;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.model.IModel;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter.LastFileShowDataPresenter;
-import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter.ShowEmailPresenter;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter.ShowDetailsPresenter;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowDataView;
-import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowEmailView;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowDetailsView;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.navigation.Navigator;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.controller.IShowDataController;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.controller.RecyclerViewController;
 
 import java.util.ArrayList;
 
-public class MainActivity extends MvpAppCompatActivity implements IShowDataView, IShowEmailView {
+public class MainActivity extends MvpAppCompatActivity implements IShowDataView, IShowDetailsView {
 
     @InjectPresenter LastFileShowDataPresenter lastFileShowDataPresenter;
-    @InjectPresenter ShowEmailPresenter showEmailPresenter;
+    @InjectPresenter ShowDetailsPresenter showDetailsPresenter;
 
     private IShowDataController controller;
 
@@ -32,7 +33,16 @@ public class MainActivity extends MvpAppCompatActivity implements IShowDataView,
         setContentView(R.layout.activity_main);
 
         controller = new RecyclerViewController(this);
-        findViewById(R.id.button_choose).setOnClickListener(view -> Navigator.navigateToChooseActivity(this));
+        findViewById(R.id.button_choose).setOnClickListener(view ->
+            {
+                if (!showDetailsPresenter.isLogged()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("You are not authorized.").setNegativeButton("Ok", (dialog, id) -> dialog.cancel());
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+                else Navigator.navigateToChooseActivity(this);
+            });
         findViewById(R.id.button_log_in).setOnClickListener(view -> DpbxRepository.auth(this));
     }
 
@@ -55,15 +65,7 @@ public class MainActivity extends MvpAppCompatActivity implements IShowDataView,
         controller.showError(errorModel);
     }
 
-    @Override
-    public void adaptUi(String directory) {
-        //Empty
-    }
-
-    @Override
-    public void finishActivity() {
-        //Empty
-    }
+    @Override public void finishActivity() { finish(); }
 
     /**
      * IShowEmail Methods.

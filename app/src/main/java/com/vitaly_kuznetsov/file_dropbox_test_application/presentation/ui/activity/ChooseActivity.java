@@ -10,9 +10,11 @@ import com.vitaly_kuznetsov.file_dropbox_test_application.R;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.model.ErrorModel;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.model.IModel;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter.AllFilesFromFolderShowDataPresenter;
-import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter.ShowEmailPresenter;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter.DirectoryNavigationPresenter;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter.ShowDetailsPresenter;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IDirectoryNavigationView;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowDataView;
-import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowEmailView;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowDetailsView;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.controller.IActivityItemClick;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.controller.IShowDataController;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.controller.RecyclerViewController;
@@ -20,10 +22,12 @@ import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.ui.contro
 import java.util.ArrayList;
 
 
-public class ChooseActivity extends MvpAppCompatActivity implements IShowDataView, IShowEmailView, IActivityItemClick {
+public class ChooseActivity extends MvpAppCompatActivity implements IShowDataView, IShowDetailsView,
+        IDirectoryNavigationView, IActivityItemClick {
 
     @InjectPresenter AllFilesFromFolderShowDataPresenter allFilesFromFolderShowDataPresenter;
-    @InjectPresenter ShowEmailPresenter showEmailPresenter;
+    @InjectPresenter ShowDetailsPresenter showDetailsPresenter;
+    @InjectPresenter DirectoryNavigationPresenter directoryNavigationPresenter;
 
     private IShowDataController controller;
 
@@ -34,6 +38,7 @@ public class ChooseActivity extends MvpAppCompatActivity implements IShowDataVie
 
         controller = new RecyclerViewController(this);
         findViewById(R.id.constraint_layout_go_back).setOnClickListener(view -> onBackPressed());
+        directoryNavigationPresenter.init(allFilesFromFolderShowDataPresenter);
     }
 
     /**
@@ -55,6 +60,18 @@ public class ChooseActivity extends MvpAppCompatActivity implements IShowDataVie
         controller.showError(errorModel);
     }
 
+    /**
+     * IShowDetailsView Methods.
+     */
+    @Override
+    public void showUserEmail(String email) {
+        TextView textView = findViewById(R.id.text_mail);
+        textView.setText(email);
+    }
+
+    /**
+     * IDirectoryNavigationView Methods.
+     */
     @Override public void adaptUi(String directory) {
         TextView textDirectory = findViewById(R.id.text_directory);
         TextView textGoBack = findViewById(R.id.text_go_back);
@@ -71,15 +88,6 @@ public class ChooseActivity extends MvpAppCompatActivity implements IShowDataVie
         }
     }
 
-    /**
-     * IShowEmailView Methods.
-     */
-    @Override
-    public void showUserEmail(String email) {
-        TextView textView = findViewById(R.id.text_mail);
-        textView.setText(email);
-    }
-
     @Override
     public void finishActivity() {
         finish();
@@ -88,14 +96,11 @@ public class ChooseActivity extends MvpAppCompatActivity implements IShowDataVie
     /**
      * IActivityItemClick Methods.
      */
-
     @Override
     public void onItemClicked(IModel iModel) {
-        allFilesFromFolderShowDataPresenter.onItemClicked(iModel);
+        directoryNavigationPresenter.onItemClicked(iModel);
     }
 
     @Override
-    public void onBackPressed() {
-        if (allFilesFromFolderShowDataPresenter.onBackPressed()) super.onBackPressed();
-    }
+    public void onBackPressed() { if (directoryNavigationPresenter.onBackPressed()) super.onBackPressed(); }
 }

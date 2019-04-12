@@ -5,7 +5,7 @@ import com.arellomobile.mvp.viewstate.strategy.SingleStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(SingleStateStrategy.class)
-public interface IShowEmailView extends MvpView {
+public interface IShowDetailsView extends MvpView {
 
     void showUserEmail(String email);
 

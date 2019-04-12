@@ -2,6 +2,7 @@ package com.vitaly_kuznetsov.file_dropbox_test_application.data.repository;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import com.dropbox.core.android.Auth;
 import com.vitaly_kuznetsov.file_dropbox_test_application.data.application.MyApplication;
 

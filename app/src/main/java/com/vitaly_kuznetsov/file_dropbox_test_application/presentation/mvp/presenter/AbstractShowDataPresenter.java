@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 abstract class AbstractShowDataPresenter extends BasePresenter<IShowDataView> implements IShowDataPresenter{
 
-    private boolean isLoading;
+    private boolean loading;
 
 
     /**
@@ -27,7 +27,7 @@ abstract class AbstractShowDataPresenter extends BasePresenter<IShowDataView> im
 
     @Override
     public void onLoadingFinished() {
-        isLoading = false;
+        loading = false;
         getViewState().hideLoading();
     }
 
@@ -70,9 +70,11 @@ abstract class AbstractShowDataPresenter extends BasePresenter<IShowDataView> im
      * Other support methods:
      */
     void refreshData(){
-        if (isLoading) return;
-        else isLoading = true;
+        if (isLoading()) return;
+        else loading = true;
         getViewState().showLoading();
         startShowDataUseCase();
     }
+
+    boolean isLoading() { return loading; }
 }

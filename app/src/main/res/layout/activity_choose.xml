@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:minWidth="56dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
         android:layout_margin="8dp"
@@ -21,8 +22,8 @@
         app:layout_constraintLeft_toLeftOf="parent">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="22dp"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:src="@drawable/ic_action_arrow_left"
             android:id="@+id/image_go_back"
             android:visibility="gone"
@@ -86,7 +87,7 @@
             android:layout_height="match_parent"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingTop="8dp"
+            android:layout_marginTop="8dp"
             android:id="@+id/recycler_view"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

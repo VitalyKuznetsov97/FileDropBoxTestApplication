@@ -1,20 +1,23 @@
 package com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.presenter;
 
-import android.util.Log;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.vitaly_kuznetsov.file_dropbox_test_application.data.repository.DpbxRepository;
 import com.vitaly_kuznetsov.file_dropbox_test_application.data.repository.UserRepository;
 import com.vitaly_kuznetsov.file_dropbox_test_application.domain.interactor.DefaultObserver;
 import com.vitaly_kuznetsov.file_dropbox_test_application.domain.interactor.GetUserDetailsUseCase;
-import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowEmailView;
+import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.mvp.view.IShowDetailsView;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.thread.UIThread;
 import com.vitaly_kuznetsov.file_dropbox_test_application.presentation.thread.UseCaseExecutionThread;
 
 @InjectViewState
-public class ShowEmailPresenter extends BasePresenter<IShowEmailView> {
+public class ShowDetailsPresenter extends BasePresenter<IShowDetailsView> {
 
     private GetUserDetailsUseCase getUserEmailUseCase;
+    private boolean logged;
+
+    public boolean isLogged() {
+        return logged;
+    }
 
     /**
      * MVP methods:
@@ -26,9 +29,8 @@ public class ShowEmailPresenter extends BasePresenter<IShowEmailView> {
     }
 
     @Override
-    public void attachView(IShowEmailView view) {
+    public void attachView(IShowDetailsView view) {
         super.attachView(view);
-        Log.d("APP_DEBUG", "OnAttach" + this.toString());
         DpbxRepository.checkLogged();
         startGetUserEmailUseCase();
     }
@@ -41,16 +43,18 @@ public class ShowEmailPresenter extends BasePresenter<IShowEmailView> {
     }
 
     private void onEmailReceived(String email){
-        Log.d("APP_DEBUG", "OnReceived" + this.toString());
-        if (email != null && !(email.equals("")))
-        getViewState().showUserEmail(email);
+        if (email != null && !(email.equals(""))) {
+            getViewState().showUserEmail(email);
+            logged = true;
+        }
+        else logged = false;
     }
 
     final class OnLoggedUseCaseObserver extends DefaultObserver<String> {
 
-        private ShowEmailPresenter presenter;
+        private ShowDetailsPresenter presenter;
 
-        OnLoggedUseCaseObserver(ShowEmailPresenter presenter) {
+        OnLoggedUseCaseObserver(ShowDetailsPresenter presenter) {
             this.presenter = presenter;
         }
 
